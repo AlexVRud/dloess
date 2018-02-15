@@ -20,6 +20,7 @@ set(DLOESS_C_SRC
 
 add_library(dloess STATIC ${DLOESS_C_SRC} ${DLOESS_FORTRAN_SRC})
 target_link_libraries(dloess INTERFACE m ${BLAS_LINKER_FLAGS} ${BLAS_LIBRARIES})
+set_property(TARGET dloess PROPERTY POSITION_INDEPENDENT_CODE ON)
 
 add_executable(air "src/air.c")
 target_link_libraries(air dloess)
