@@ -1,6 +1,10 @@
 #ifndef DLOESS_LOESS_H_
 #define DLOESS_LOESS_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* for the meaning of these fields, see struct.m */
 /* int32_t-s are used here so that the codes can be called from S */
 
@@ -110,5 +114,9 @@ pointwise(struct pred_struct *pre, int32_t m, double coverage,
 
 void
 pw_free_mem(struct ci_struct *ci);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif // DLOESS_LOESS_H_
