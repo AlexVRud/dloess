@@ -5,7 +5,7 @@ SYNOPSIS
 	#include "loess.h"
 
 	double  *eval, coverage;
-	int32_t    m, se;
+	int32_t m, se;
 	struct  loess_struct    *lo;
 	struct  predict_struct  *pre;
 	struct  ci_struct 	*ci;
@@ -42,7 +42,7 @@ DESCRIPTION
 	predict() takes all the loess structures from earlier calls to
 	loess_setup() and loess(), does an evaluation based on 
 	eval and m, and stores the results in the pre structure.
-	if se is TRUE, then pre.se_fit are computed aint32_t with the 
+	if se is TRUE, then pre.se_fit are computed along with the
 	surface values, pre.fit.  These returned vectors 
 	are vectors of the same structural arrangement as that of eval.
 
