@@ -58,6 +58,7 @@ char    **surface, **family;
         int32_t    N, D, M, sum_drop_sqr = 0, sum_parametric = 0,
 	        nonparametric = 0, *order_parametric, *order_drop_sqr;
 	int     i, j, k, p, cut, comp();
+    int32_t family_id;
 
         D = size_info[0];
         N = size_info[1];
@@ -114,8 +115,9 @@ char    **surface, **family;
 
 	if(!strcmp(*surface, "direct")) {
 	        if(*se) {
+                        family_id = (!strcmp(*family, "gaussian")) ? GAUSSIAN : SYMMETRIC;
 		        loess_dfitse(y, x, x_evaluate, weights, robust,
-				!strcmp(*family, "gaussian"), span, degree,
+				&family_id, span, degree,
                                 &nonparametric, order_drop_sqr, &sum_drop_sqr,
                                 &D, &N, &M, fit, L);
                 }
