@@ -101,7 +101,7 @@ double	response[] = {14.4535533874191, 6.62282520910778, 13.6714139876233,
 double  newdata1[] = {-2.5, 0., 2.5, 0., 0., 0.};
 double  newdata2[] = {-0.5, 0.5, 0., 0.};
 double  coverage = .99;
-long	n = 100, p = 2, m = 3, se_fit = FALSE;
+int32_t	n = 100, p = 2, m = 3, se_fit = FALSE;
 int     i;
 
 main() {

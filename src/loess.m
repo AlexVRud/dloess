@@ -6,7 +6,7 @@ SYNOPSIS
 
 	#include "loess.h"
 	double  *x, *y;
-	long    n, p;
+	int32_t    n, p;
         struct  loess_struct    *lo, *lo2;
 	struct  anova_struct    *aov;
 	

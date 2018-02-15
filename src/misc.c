@@ -35,7 +35,7 @@ struct  anova_struct	*out;
 void
 pointwise(pre, m, coverage, ci)
 struct  pred_struct     *pre;
-long    m;
+int32_t    m;
 double  coverage;
 struct  ci_struct	*ci;
 {	
@@ -293,9 +293,9 @@ double p, a, b;
         return(fmax(0.0, fmin(1.0, invigauss_quick(p)*s + m)));
 }
 
-long
+int32_t
 max(a, b)
-long a, b;
+int32_t a, b;
 {
         return(a > b ? a : b);
 }

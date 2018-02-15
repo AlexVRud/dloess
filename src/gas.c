@@ -17,7 +17,7 @@ double	gas_fit_E[] = {0.665, 0.949, 1.224};
 double  newdata[] = {0.6650000, 0.7581667, 0.8513333, 0.9445000,
                      1.0376667, 1.1308333, 1.2240000};
 double  coverage = .99;
-long    i, n = 22, p = 1, m = 3, se_fit = FALSE;
+int32_t    i, n = 22, p = 1, m = 3, se_fit = FALSE;
 
 main() {
 	printf("\nloess(&gas):\n");

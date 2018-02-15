@@ -6,7 +6,7 @@ static  char    *surf_stat;
 void
 loess_setup(x, y, n, p, lo)
 double  *x, *y;
-long	n, p;
+int32_t	n, p;
 struct  loess_struct	*lo;
 {
 	int	i, max_kd;
@@ -43,8 +43,8 @@ struct  loess_struct	*lo;
 	lo->out.robust = (double *) malloc(n * sizeof(double));
 	lo->out.divisor = (double *) malloc(p * sizeof(double));
 
-	lo->kd_tree.parameter = (long *) malloc(7 * sizeof(long));
-	lo->kd_tree.a = (long *) malloc(max_kd * sizeof(long));
+	lo->kd_tree.parameter = (int32_t *) malloc(7 * sizeof(int32_t));
+	lo->kd_tree.a = (int32_t *) malloc(max_kd * sizeof(int32_t));
 	lo->kd_tree.xi = (double *) malloc(max_kd * sizeof(double));
 	lo->kd_tree.vert = (double *) malloc(p * 2 * sizeof(double));
 	lo->kd_tree.vval = (double *) malloc((p + 1) * max_kd * sizeof(double));
@@ -54,7 +54,7 @@ void
 loess(lo)
 struct	loess_struct	*lo;
 {
-	long	size_info[2], iterations;
+	int32_t	size_info[2], iterations;
 	void    loess_();
 
 	size_info[0] = lo->in.p;
@@ -106,14 +106,14 @@ loess_(y, x_, size_info, weights, span, degree, parametric, drop_square,
 double	*y, *x_, *weights, *span, *cell, *pseudovalues, 
 	*fitted_values, *fitted_residuals, *enp, *s, *one_delta, *two_delta, 
 	*trace_hat_out, *diagonal, *robust, *divisor, *xi, *vert, *vval;
-long	*size_info, *degree, *parametric, *drop_square, *normalize, 
+int32_t	*size_info, *degree, *parametric, *drop_square, *normalize, 
 	*iterations, *parameter, *a; 
 char	**statistics, **surface, **trace_hat_in;
 {
 	double	*x, *x_tmp, new_cell, trL, delta1, delta2, sum_squares = 0, 
 		*pseudo_resid, *temp, *xi_tmp, *vert_tmp, *vval_tmp, 
 		*diag_tmp, trL_tmp = 0, d1_tmp = 0, d2_tmp = 0, sum, mean;
-	long	i, j, k, p, N, D, sum_drop_sqr = 0, sum_parametric = 0, 
+	int32_t	i, j, k, p, N, D, sum_drop_sqr = 0, sum_parametric = 0, 
 		setLf,	nonparametric = 0, *order_parametric,
 		*order_drop_sqr, zero = 0, max_kd, *a_tmp, *param_tmp;
 	int     cut, comp();
@@ -128,14 +128,14 @@ char	**statistics, **surface, **trace_hat_in;
 	x = (double *) malloc(D * N * sizeof(double));
 	x_tmp = (double *) malloc(D * N * sizeof(double));
 	temp = (double *) malloc(N * sizeof(double));
-	a_tmp = (long *) malloc(max_kd * sizeof(long));
+	a_tmp = (int32_t *) malloc(max_kd * sizeof(int32_t));
 	xi_tmp = (double *) malloc(max_kd * sizeof(double));
 	vert_tmp = (double *) malloc(D * 2 * sizeof(double));
 	vval_tmp = (double *) malloc((D + 1) * max_kd * sizeof(double));
 	diag_tmp = (double *) malloc(N * sizeof(double));
-	param_tmp = (long *) malloc(N * sizeof(long));
-	order_parametric = (long *) malloc(D * sizeof(long));
-	order_drop_sqr = (long *) malloc(D * sizeof(long));
+	param_tmp = (int32_t *) malloc(N * sizeof(int32_t));
+	order_parametric = (int32_t *) malloc(D * sizeof(int32_t));
+	order_drop_sqr = (int32_t *) malloc(D * sizeof(int32_t));
         if((*iterations) > 0)
                 pseudo_resid = (double *) malloc(N * sizeof(double));
 

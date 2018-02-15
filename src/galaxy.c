@@ -151,7 +151,7 @@ double	direction[] = {8.46279, 7.96498, 7.46717, 6.96936, 6.47154, 5.97373,
 		49.8887};
 double	ew[59], ns[99], grid[11682], fit_eval[200], ci_eval[30];
 double	tmp, range = 98, coverage = .99;
-long	n = 323, p = 2, m, se_fit = FALSE;
+int32_t	n = 323, p = 2, m, se_fit = FALSE;
 int	i, j, k;
 
 main() {

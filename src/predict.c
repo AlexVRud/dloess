@@ -4,11 +4,11 @@
 void
 predict(eval, m, lo, pre, se)
 double  *eval;
-long	m, se;
+int32_t	m, se;
 struct	loess_struct	*lo;
 struct	pred_struct	*pre;
 {
-	long	size_info[3];
+	int32_t	size_info[3];
 	void    pred_();
 
         pre->fit = (double *) malloc(m * sizeof(double));
@@ -48,13 +48,13 @@ pred_(y, x_, new_x, size_info, s, weights, robust, span, degree,
 	parameter, a, xi, vert, vval, divisor, se, fit, se_fit)
 double  *y, *x_, *new_x, *weights, *robust, *span, *cell, *fit, *s,
         *xi, *vert, *vval, *divisor, *se_fit;
-long    *size_info, *degree, *normalize, *parametric, *drop_square, 
+int32_t    *size_info, *degree, *normalize, *parametric, *drop_square, 
         *parameter, *a, *se;
 char    **surface, **family;
 {     
         double  *x, *x_tmp, *x_evaluate, *L, new_cell, z, tmp, *fit_tmp, 
 	        *temp, sum, mean;
-        long    N, D, M, sum_drop_sqr = 0, sum_parametric = 0,
+        int32_t    N, D, M, sum_drop_sqr = 0, sum_parametric = 0,
 	        nonparametric = 0, *order_parametric, *order_drop_sqr;
 	int     i, j, k, p, cut, comp();
 
@@ -66,8 +66,8 @@ char    **surface, **family;
 	x_tmp = (double *) malloc(N * D * sizeof(double));
 	x_evaluate = (double *) malloc(M * D * sizeof(double));
 	L = (double *) malloc(N * M * sizeof(double));
-        order_parametric = (long *) malloc(D * sizeof(long));
-        order_drop_sqr = (long *) malloc(D * sizeof(long));
+        order_parametric = (int32_t *) malloc(D * sizeof(int32_t));
+        order_drop_sqr = (int32_t *) malloc(D * sizeof(int32_t));
 	temp = (double *) malloc(N * D * sizeof(double));
 
 	for(i = 0; i < (N * D); i++)

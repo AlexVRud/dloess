@@ -1,23 +1,25 @@
 /* for the meaning of these fields, see struct.m */
-/* longs are used here so that the codes can be called from S */
+/* int32_t-s are used here so that the codes can be called from S */
+
+#include <stdint.h>
 
 #define TRUE  1
 #define FALSE 0
 
 extern struct loess_struct {
 	struct {
-		long    n;
-	        long    p;
+		int32_t    n;
+	        int32_t    p;
 	        double  *y;
 	        double  *x;
 		double	*weights;
 	} in;
 	struct {
 	        double  span;
-	        long    degree;
-	        long    normalize;
-	        long    parametric[8];
-	        long    drop_square[8];
+	        int32_t    degree;
+	        int32_t    normalize;
+	        int32_t    parametric[8];
+	        int32_t    drop_square[8];
 	        char    *family;
 	} model;
 	struct {
@@ -25,11 +27,11 @@ extern struct loess_struct {
 	        char    *statistics;
 	        double  cell;
 	        char    *trace_hat;
-	        long    iterations;
+	        int32_t    iterations;
 	} control;
 	struct {
-		long	*parameter;
-		long	*a;
+		int32_t	*parameter;
+		int32_t	*a;
 		double	*xi;
 		double	*vert;
 		double	*vval;

@@ -34,7 +34,7 @@ double  newdata[] = {7.5, 9.0, 12.0, 15.0, 18.0, 0.6, 0.8, 1.0, 0.8, 0.6};
 double	Cmin = 7.5, Cmax = 18.0, Emin = 0.535, Emax = 1.232;
 double  Cm[7], Em[16], grid[224];
 double  tmp, coverage = .99;
-long    n = 88, p = 2, m = 5, se_fit = FALSE;
+int32_t    n = 88, p = 2, m = 5, se_fit = FALSE;
 int     i, j, k;
 
 main() {
