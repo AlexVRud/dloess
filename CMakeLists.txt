@@ -35,3 +35,12 @@ target_link_libraries(gas dloess)
 
 add_executable(madeup "src/madeup.c")
 target_link_libraries(madeup dloess)
+
+INSTALL(FILES "src/loess.h"
+  DESTINATION include
+)
+INSTALL(TARGETS dloess
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+)
