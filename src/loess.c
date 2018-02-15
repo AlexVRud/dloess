@@ -1,5 +1,7 @@
 #include "S.h"
 #include "loess.h"
+#include "loessc.h"
+#include "loessf.h"
 
 static  char    *surf_stat;
 

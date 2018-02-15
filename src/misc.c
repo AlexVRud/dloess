@@ -1,5 +1,6 @@
 #include "S.h"
 #include "loess.h"
+#include "misc.h"
 
 /*  If your compiler is so ancient it doesn't recognize void, say
 #define void

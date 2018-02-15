@@ -67,6 +67,7 @@ double	rad_temp_wind[] = {190, 118, 149, 313, 299, 99, 19, 256, 290, 274, 65,
 		10.3, 10.3, 16.6, 6.9, 14.3, 8, 11.5};
 int32_t    n = 111, p = 3;
 
+int
 main() {
         printf("\nloess(&air):\n");
         loess_setup(rad_temp_wind, ozone, n, p, &air);
@@ -75,4 +76,5 @@ main() {
         loess_summary(&air);        
 
         loess_free_mem(&air);
+        return 0;
 }

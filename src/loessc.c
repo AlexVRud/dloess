@@ -1,13 +1,15 @@
 #include "S.h"
+#include "loessc.h"
+#include "loessf.h"
+#include "misc.h"
 
 #define	min(x,y)  ((x) < (y) ? (x) : (y))
 #define	max(x,y)  ((x) > (y) ? (x) : (y))
-#define	GAUSSIAN	1
-#define SYMMETRIC	0
 
 static int32_t	*iv, liv, lv, tau;
 static double	*v;
 
+void
 loess_raw(y, x, weights, robust, d, n, span, degree, nonparametric, 
 	drop_square, sum_drop_sqr, cell, surf_stat, surface, parameter, a, 
 	xi, vert, vval, diagonal, trL, one_delta, two_delta, setLf)
@@ -82,6 +84,7 @@ char	**surf_stat;
 	loess_free();
 }
 
+void
 loess_dfit(y, x, x_evaluate, weights, span, degree, nonparametric, 
 	drop_square, sum_drop_sqr, d, n, m, fit)
 double	*y, *x, *x_evaluate, *weights, *span, *fit;
@@ -96,6 +99,7 @@ int32_t	*degree, *nonparametric, *drop_square, *sum_drop_sqr, *d, *n, *m;
 	loess_free();
 }
 
+void
 loess_dfitse(y, x, x_evaluate, weights, robust, family, span, degree, 
 	nonparametric, drop_square, sum_drop_sqr, d, n, m, fit, L)
 double	*y, *x, *x_evaluate, *weights, *robust, *span, *fit, *L;
@@ -118,6 +122,8 @@ int32_t	*family, *degree, *nonparametric, *drop_square, *sum_drop_sqr,
 	}	
 	loess_free();
 }
+
+void
 loess_ifit(parameter, a, xi, vert, vval, m, x_evaluate, fit)
 double	*xi, *vert, *vval, *x_evaluate, *fit;
 int32_t	*parameter, *a, *m;
@@ -127,6 +133,7 @@ int32_t	*parameter, *a, *m;
 	loess_free();
 }
 
+void
 loess_ise(y, x, x_evaluate, weights, span, degree, nonparametric, 
 	drop_square, sum_drop_sqr, cell, d, n, m, fit, L)
 double	*y, *x, *x_evaluate, *weights, *span, *cell, *fit, *L;
@@ -142,6 +149,7 @@ int32_t	*degree, *nonparametric, *drop_square, *sum_drop_sqr, *d, *n, *m;
 	loess_free();
 }
 
+void
 loess_workspace(d, n, span, degree, nonparametric, drop_square, 
 	sum_drop_sqr, setLf)
 int32_t	*d, *n, *degree, *nonparametric, *drop_square, *sum_drop_sqr, 
@@ -172,6 +180,7 @@ double	*span;
                 iv[i + 40] = drop_square[i];
 }
 
+void
 loess_prune(parameter, a, xi, vert, vval)
 double	*xi, *vert, *vval;
 int32_t	*parameter, *a;
@@ -207,6 +216,7 @@ int32_t	*parameter, *a;
 		vval[i] = v[vv1 + i];
 }
 
+void
 loess_grow(parameter, a, xi, vert, vval)
 double	*xi, *vert, *vval;
 int32_t	*parameter, *a;
@@ -258,6 +268,7 @@ int32_t	*parameter, *a;
 			v+xi1, iv+iv[7]-1, iv+iv[8]-1, iv+iv[9]-1);
 }
 
+void
 loess_free()
 {
         Free(v);

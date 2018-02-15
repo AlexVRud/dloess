@@ -37,6 +37,7 @@ double  tmp, coverage = .99;
 int32_t    n = 88, p = 2, m = 5, se_fit = FALSE;
 int     i, j, k;
 
+int
 main() {
         printf("\nloess(&ethanol): (span = 0.5)\n");
         loess_setup(C_E, NOx, n, p, &ethanol);
@@ -90,4 +91,5 @@ main() {
 	loess_free_mem(&ethanol_cp);
         pred_free_mem(&ethanol_pred);     
         pred_free_mem(&ethanol_grid);     
+        return 0;
 }

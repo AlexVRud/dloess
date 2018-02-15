@@ -104,6 +104,7 @@ double  coverage = .99;
 int32_t	n = 100, p = 2, m = 3, se_fit = FALSE;
 int     i;
 
+int
 main() {
         printf("\nloess(&madeup):\n");
 	loess_setup(one_two, response, n, p, &madeup);
@@ -169,4 +170,5 @@ main() {
 	loess_free_mem(&madeup_new);
 	pred_free_mem(&madeup_pred);
 	pw_free_mem(&madeup_ci);
+        return 0;
 }

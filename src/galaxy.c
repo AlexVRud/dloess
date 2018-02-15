@@ -154,6 +154,7 @@ double	tmp, range = 98, coverage = .99;
 int32_t	n = 323, p = 2, m, se_fit = FALSE;
 int	i, j, k;
 
+int
 main() {
         printf("\nloess(&galaxy):\n");
         loess_setup(direction, velocity, n, p, &galaxy);
@@ -201,4 +202,5 @@ main() {
 	pred_free_mem(&galaxy_contour);
 	pred_free_mem(&spine_fit);
 	pred_free_mem(&spine_se);
+        return 0;
 }

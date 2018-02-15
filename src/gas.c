@@ -19,6 +19,7 @@ double  newdata[] = {0.6650000, 0.7581667, 0.8513333, 0.9445000,
 double  coverage = .99;
 int32_t    i, n = 22, p = 1, m = 3, se_fit = FALSE;
 
+int
 main() {
 	printf("\nloess(&gas):\n");
         loess_setup(E, NOx, n, p, &gas);
@@ -62,6 +63,7 @@ main() {
 	loess_free_mem(&gas_null);
 	pred_free_mem(&gas_pred);	
 	pw_free_mem(&gas_ci);
+        return 0;
 }
 
 

@@ -1,3 +1,6 @@
+#ifndef DLOESS_S_H_
+#define DLOESS_S_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -29,3 +32,4 @@
 
 #define NULL_ENTRY          ((int *)NULL)
 
+#endif // DLOESS_S_H_

@@ -1,5 +1,6 @@
 #include "S.h"
 #include "loess.h"
+#include "loessc.h"
 
 void
 predict(eval, m, lo, pre, se)
