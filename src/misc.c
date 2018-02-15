@@ -285,26 +285,12 @@ double
 invibeta_quick(p, a, b)
 double p, a, b;
 {
-        double x, m, s, fmax(), fmin(), invigauss_quick();
+        double x, m, s, invigauss_quick();
 
         x = a + b;
         m = a / x;
         s = sqrt((a*b) / (x*x*(x+1)));
         return(fmax(0.0, fmin(1.0, invigauss_quick(p)*s + m)));
-}
- 
-static double
-fmin(a, b)
-double a, b;
-{
-        return(a < b ? a : b);
-}
-
-static double
-fmax(a, b)
-double a, b;
-{
-        return(a > b ? a : b);
 }
 
 long
