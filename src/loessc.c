@@ -21,19 +21,20 @@ char	**surf_stat;
 {
 	int32_t	zero = 0, one = 1, two = 2, nsing, i, k;
 	double	*hat_matrix, *LL;
+        double fzero = 0.0;
 
 	*trL = 0;
 	loess_workspace(d, n, span, degree, nonparametric, drop_square, 
 		sum_drop_sqr, setLf);
         v[1] = *cell;
 	if(!strcmp(*surf_stat, "interpolate/none")) {
-		F77_SUB(lowesb)(x, y, robust, &zero, &zero, iv, &liv, &lv, v);
+		F77_SUB(lowesb)(x, y, robust, &fzero, &zero, iv, &liv, &lv, v);
 		F77_SUB(lowese)(iv, &liv, &lv, v, n, x, surface);
 		loess_prune(parameter, a, xi, vert, vval);
 	}			
 	else if (!strcmp(*surf_stat, "direct/none")) {
 		F77_SUB(lowesf)(x, y, robust, iv, &liv, &lv, v, n, x,
-			&zero, &zero, surface);
+			&fzero, &zero, surface);
 	}
 	else if (!strcmp(*surf_stat, "interpolate/1.approx")) {
 		F77_SUB(lowesb)(x, y, weights, diagonal, &one, iv, &liv, &lv, v);
@@ -44,7 +45,7 @@ char	**surf_stat;
 		loess_prune(parameter, a, xi, vert, vval);
 	}
         else if (!strcmp(*surf_stat, "interpolate/2.approx")) {
-		F77_SUB(lowesb)(x, y, robust, &zero, &zero, iv, &liv, &lv, v);
+		F77_SUB(lowesb)(x, y, robust, &fzero, &zero, iv, &liv, &lv, v);
 		F77_SUB(lowese)(iv, &liv, &lv, v, n, x, surface);
 		nsing = iv[29];
 		F77_SUB(ehg196)(&tau, d, span, trL);
@@ -91,11 +92,12 @@ double	*y, *x, *x_evaluate, *weights, *span, *fit;
 int32_t	*degree, *nonparametric, *drop_square, *sum_drop_sqr, *d, *n, *m; 
 {
 	int32_t	zero = 0, one = 1;
+        double fzero = 0.0;
 	
         loess_workspace(d, n, span, degree, nonparametric, drop_square,
                 sum_drop_sqr, &zero);
 	F77_SUB(lowesf)(x, y, weights, iv, &liv, &lv, v, m, x_evaluate,
-			&zero, &zero, fit);
+			&fzero, &zero, fit);
 	loess_free();
 }
 
@@ -107,6 +109,7 @@ int32_t	*family, *degree, *nonparametric, *drop_square, *sum_drop_sqr,
 	*d, *n, *m; 
 {
 	int32_t	zero = 0, one = 1, two = 2;
+        double fzero = 0.0;
 	
         loess_workspace(d, n, span, degree, nonparametric, drop_square,
                 sum_drop_sqr, &zero);
@@ -118,7 +121,7 @@ int32_t	*family, *degree, *nonparametric, *drop_square, *sum_drop_sqr,
 		F77_SUB(lowesf)(x, y, weights, iv, &liv, &lv, v, m,
 				x_evaluate, L, &two, fit);
 		F77_SUB(lowesf)(x, y, robust, iv, &liv, &lv, v, m,
-				x_evaluate, &zero, &zero, fit);
+				x_evaluate, &fzero, &zero, fit);
 	}	
 	loess_free();
 }
@@ -140,11 +143,12 @@ double	*y, *x, *x_evaluate, *weights, *span, *cell, *fit, *L;
 int32_t	*degree, *nonparametric, *drop_square, *sum_drop_sqr, *d, *n, *m; 
 {
 	int32_t	zero = 0, one = 1;
+        double fzero = 0.0;
 	
         loess_workspace(d, n, span, degree, nonparametric, drop_square,
                 sum_drop_sqr, &one);
 	v[1] = *cell;
-	F77_SUB(lowesb)(x, y, weights, &zero, &zero, iv, &liv, &lv, v);
+	F77_SUB(lowesb)(x, y, weights, &fzero, &zero, iv, &liv, &lv, v);
 	F77_SUB(lowesl)(iv, &liv, &lv, v, m, x_evaluate, L);
 	loess_free();
 }
